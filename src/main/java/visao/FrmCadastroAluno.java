@@ -1,10 +1,18 @@
 package visao;
 
+import javax.swing.JOptionPane;
+import modelo.Aluno;
+
 public class FrmCadastroAluno extends javax.swing.JFrame {
 
+   // 
+   private Aluno objetoaluno;
 
    public FrmCadastroAluno() {
       initComponents();
+
+      // CARREGANDO O OBJETO ALUNO
+      this.objetoaluno = new Aluno();
    }
 
    @SuppressWarnings("unchecked")
@@ -35,6 +43,11 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
       jLabel4.setText("Fase");
 
       JBCadastrar.setText("Cadastrar");
+      JBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            JBCadastrarActionPerformed(evt);
+         }
+      });
 
       JBCancelar.setText("Cancelar");
       JBCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +130,53 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
 //      JTFIdade.setText("");
       this.dispose();
    }//GEN-LAST:event_JBCancelarActionPerformed
+
+   private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
+      try {
+// recebendo e validando dados da interface gráfica.
+         String nome = "";
+         int idade = 0;
+         String curso = "";
+         int fase = 0;
+         if (this.JTFNome.getText().length() < 2) {
+            throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+         } else {
+            nome = this.JTFNome.getText();
+         }
+         if (this.JTFIdade.getText().length() <= 0) {
+            throw new Mensagem("Idade deve ser número e maior que zero.");
+         } else {
+            idade = Integer.parseInt(this.JTFIdade.getText());
+         }
+
+         if (this.JTFCurso.getText().length() < 2) {
+            throw new Mensagem("Curso deve conter ao menos 2 caracteres.");
+         } else {
+            curso = this.JTFCurso.getText();
+         }
+         if (this.JTFFase.getText().length() <= 0) {
+            throw new Mensagem("Fase deve ser número e maior que zero.");
+         } else {
+            fase = Integer.parseInt(this.JTFFase.getText());
+         }
+// envia os dados para o Controlador cadastrar
+         if (this.objetoaluno.insertAlunoBD(nome, idade, curso, fase)) {
+            JOptionPane.showMessageDialog(null, "Aluno Cadastrado com Sucesso!");
+// limpa campos da interface
+            this.JTFNome.setText("");
+            this.JTFIdade.setText("");
+            this.JTFCurso.setText("");
+            this.JTFFase.setText("");
+         }
+//Exibie no console o aluno cadastrado
+         System.out.println(this.objetoaluno.getMinhaLista().toString());
+      } catch (Mensagem erro) {
+         JOptionPane.showMessageDialog(null, erro.getMessage());
+      } catch (NumberFormatException erro2) {
+         JOptionPane.showMessageDialog(null, "Informe um número válido.");
+      }
+
+   }//GEN-LAST:event_JBCadastrarActionPerformed
 
    public static void main(String args[]) {
       java.awt.EventQueue.invokeLater(new Runnable() {
