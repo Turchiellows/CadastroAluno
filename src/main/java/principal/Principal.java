@@ -1,12 +1,15 @@
 // PACOTES
 package principal;
 
-import visao.Index;
+import visao.FrmPrincipal;
 
 public class Principal {
    public static void main(String[] args) {
-      Index index = new Index();
+      // INSTANCIAR A VIEW INICIAL
+      FrmPrincipal index = new FrmPrincipal();
       
+      
+      // ABRIR A JANELA
       index.setVisible(true);
       index.setLocationRelativeTo(null);
       
