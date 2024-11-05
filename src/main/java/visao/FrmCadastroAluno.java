@@ -21,6 +21,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
       JTFFase = new javax.swing.JTextField();
       JBCadastrar = new javax.swing.JButton();
       JBCancelar = new javax.swing.JButton();
+      jLabel5 = new javax.swing.JLabel();
 
       setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
       setTitle("Cadastrar Aluno");
@@ -42,6 +43,9 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
          }
       });
 
+      jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+      jLabel5.setText("Cadastro de alunos");
+
       javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
       getContentPane().setLayout(layout);
       layout.setHorizontalGroup(
@@ -51,21 +55,23 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                   .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                      .addGap(22, 22, 22)
-                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                           .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                              .addComponent(jLabel3)
-                              .addComponent(jLabel2)
-                              .addComponent(jLabel1))
-                           .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                           .addComponent(jLabel3)
+                           .addComponent(jLabel2)
+                           .addComponent(jLabel1))
+                        .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addGroup(layout.createSequentialGroup()
+                           .addGap(2, 2, 2)
+                           .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                   .addGroup(layout.createSequentialGroup()
                      .addContainerGap()
                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                           .addComponent(JTFCurso)
-                           .addComponent(JTFFase, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)))))
+                        .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addGap(308, 308, 308)))
                .addGroup(layout.createSequentialGroup()
                   .addGap(89, 89, 89)
                   .addComponent(JBCadastrar)
@@ -76,15 +82,17 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
       layout.setVerticalGroup(
          layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
          .addGroup(layout.createSequentialGroup()
-            .addGap(65, 65, 65)
+            .addGap(23, 23, 23)
+            .addComponent(jLabel5)
+            .addGap(26, 26, 26)
             .addComponent(jLabel1)
             .addGap(2, 2, 2)
             .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(18, 18, 18)
             .addComponent(jLabel2)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGap(11, 11, 11)
+            .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel3)
             .addGap(5, 5, 5)
             .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,7 +104,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                .addComponent(JBCadastrar)
                .addComponent(JBCancelar))
-            .addContainerGap(183, Short.MAX_VALUE))
+            .addContainerGap(135, Short.MAX_VALUE))
       );
 
       pack();
@@ -129,5 +137,6 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
    private javax.swing.JLabel jLabel2;
    private javax.swing.JLabel jLabel3;
    private javax.swing.JLabel jLabel4;
+   private javax.swing.JLabel jLabel5;
    // End of variables declaration//GEN-END:variables
 }
