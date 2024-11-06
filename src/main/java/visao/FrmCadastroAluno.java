@@ -77,7 +77,7 @@ public class FrmCadastroAluno extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGroup(layout.createSequentialGroup()
                            .addGap(2, 2, 2)
-                           .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                           .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                   .addGroup(layout.createSequentialGroup()
                      .addContainerGap()
                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

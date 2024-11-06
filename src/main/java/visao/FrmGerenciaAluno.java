@@ -14,6 +14,8 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
 
       // CARREGANDO O OBJETO ALUNO
       this.objetoaluno = new Aluno();
+
+      this.carregaTabela();
    }
 
    public void carregaTabela() {
@@ -66,6 +68,11 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
             "ID", "Nome", "Idade", "Curso", "Fase"
          }
       ));
+      JTableAlunos.addMouseListener(new java.awt.event.MouseAdapter() {
+         public void mouseClicked(java.awt.event.MouseEvent evt) {
+            JTableAlunosMouseClicked(evt);
+         }
+      });
       jScrollPane1.setViewportView(JTableAlunos);
       if (JTableAlunos.getColumnModel().getColumnCount() > 0) {
          JTableAlunos.getColumnModel().getColumn(0).setMaxWidth(30);
@@ -94,6 +101,11 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
       });
 
       JBApagar.setText("Apagar");
+      JBApagar.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            JBApagarActionPerformed(evt);
+         }
+      });
 
       jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
       jLabel5.setText("Gerenciamento de alunos");
@@ -115,9 +127,9 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
                      .addGap(8, 8, 8)
                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4)
-                        .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                     .addGap(262, 262, 262))
+                        .addComponent(JTFCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JTFFase, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addGap(242, 242, 242))
                   .addGroup(layout.createSequentialGroup()
                      .addContainerGap()
                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +147,7 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
                   .addComponent(JBApagar))
                .addGroup(layout.createSequentialGroup()
                   .addContainerGap()
-                  .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                  .addComponent(JTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       );
       layout.setVerticalGroup(
@@ -229,6 +241,58 @@ public class FrmGerenciaAluno extends javax.swing.JFrame {
          carregaTabela();
       }
    }//GEN-LAST:event_JBAlterarActionPerformed
+
+   private void JTableAlunosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableAlunosMouseClicked
+      if (this.JTableAlunos.getSelectedRow() != -1) {
+         String nome = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 1).toString();
+         String idade = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 2).toString();
+         String curso = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 3).toString();
+         String fase = this.JTableAlunos.getValueAt(this.JTableAlunos.getSelectedRow(), 4).toString();
+         this.JTFNome.setText(nome);
+         this.JTFIdade.setText(idade);
+         this.JTFCurso.setText(curso);
+         this.JTFFase.setText(fase);
+      }
+
+   }//GEN-LAST:event_JTableAlunosMouseClicked
+
+   private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
+      try {
+// validando dados da interface gráfica.
+         int id = 0;
+         if (this.JTableAlunos.getSelectedRow() == -1) {
+            throw new Mensagem("Primeiro Selecione um Aluno para APAGAR");
+         } else {
+            id = Integer.parseInt(this.JTableAlunos.
+               getValueAt(this.JTableAlunos.getSelectedRow(), 0).
+               toString());
+         }
+// retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
+         int respostaUsuario = JOptionPane.
+            showConfirmDialog(null,
+               "Tem certeza que deseja apagar este Aluno ?");
+         if (respostaUsuario == 0) {// clicou em SIM
+// envia os dados para o Aluno processar
+            if (this.objetoaluno.deleteAlunoBD(id)) {
+// limpa os campos
+               this.JTFNome.setText("");
+               this.JTFIdade.setText("");
+               this.JTFCurso.setText("");
+               this.JTFFase.setText("");
+               JOptionPane.showMessageDialog(rootPane,
+                  "Aluno Apagado com Sucesso!");
+            }
+         }
+// atualiza a tabela.
+         System.out.println(this.objetoaluno.getMinhaLista().toString());
+      } catch (Mensagem erro) {
+         JOptionPane.showMessageDialog(null, erro.getMessage());
+      } finally {
+// atualiza a tabela.
+         carregaTabela();
+      }
+
+   }//GEN-LAST:event_JBApagarActionPerformed
 
    public static void main(String args[]) {
       java.awt.EventQueue.invokeLater(new Runnable() {
