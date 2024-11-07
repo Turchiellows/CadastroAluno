@@ -19,6 +19,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
       jMenuItemGerenciarAluno = new javax.swing.JMenuItem();
       jMenuItemSair = new javax.swing.JMenuItem();
       jMenuSobre = new javax.swing.JMenu();
+      jMenuItem2 = new javax.swing.JMenuItem();
 
       jMenuItem1.setText("jMenuItem1");
 
@@ -54,6 +55,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
       jMenuBar1.add(jMenuArquivo);
 
       jMenuSobre.setText("Sobre");
+
+      jMenuItem2.setText("Sobre");
+      jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jMenuItem2ActionPerformed(evt);
+         }
+      });
+      jMenuSobre.add(jMenuItem2);
+
       jMenuBar1.add(jMenuSobre);
 
       setJMenuBar(jMenuBar1);
@@ -88,6 +98,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
      todos.setLocationRelativeTo(null);
    }//GEN-LAST:event_jMenuItemGerenciarAlunoActionPerformed
 
+   private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+     FrmSobre info = new FrmSobre();
+     info.setVisible(true);
+     info.setLocationRelativeTo(null);
+   }//GEN-LAST:event_jMenuItem2ActionPerformed
+
 
    public static void main(String args[]) {
       java.awt.EventQueue.invokeLater(new Runnable() {
@@ -101,6 +117,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
    private javax.swing.JMenu jMenuArquivo;
    private javax.swing.JMenuBar jMenuBar1;
    private javax.swing.JMenuItem jMenuItem1;
+   private javax.swing.JMenuItem jMenuItem2;
    private javax.swing.JMenuItem jMenuItemGerenciarAluno;
    private javax.swing.JMenuItem jMenuItemNovoAluno;
    private javax.swing.JMenuItem jMenuItemSair;
